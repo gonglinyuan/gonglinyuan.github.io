@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <script>
+            var getPids = function(id) {
+                var getPid = function(hw, id) {
+                    var res = (hw[0] * id + hw[1]) % hw[2];
+                    return res === 0 ? hw[2] : res;
+                };
+            
+                var hws = [
+                    [[11, 3, 34], [13, 5, 53], [5, 7, 24], [3, 11, 7], [3, 13, 14]],
+                    [[11, 7, 15], [3, 5, 9], [7, 11, 16], [3, 2, 4]]
+                ];
+            
+                var str = "";
+                for (var i in hws) {
+                    str += "<p>";
+                    for (var j in hws[i]) {
+                        str += getPid(hws[i][j], id) + ", ";
+                    }
+                    str += "</p>"
+                };
+                return str;
+            };
+            
+            var main = function() {
+                document.getElementById("doc").innerHTML = getPids(Number(prompt("Please enter your id:")));
+            };
+        </script>
+    </head>
+    <body onload="main()">
+        <div id = "doc">
+        </div>
+    </body>
+</html>
